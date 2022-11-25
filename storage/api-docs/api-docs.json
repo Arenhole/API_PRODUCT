@@ -1,0 +1,259 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Produit",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/produit": {
+            "get": {
+                "tags": [
+                    "ApiProduit"
+                ],
+                "summary": "Get List Of Produits",
+                "description": "Returns all produits.",
+                "operationId": "getAllProduits",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ApiProduit"
+                ],
+                "summary": "Create Produit",
+                "description": "create a produit.",
+                "operationId": "createProduit",
+                "requestBody": {
+                    "description": "Pass produit parameters",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "stock"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Tomate"
+                                    },
+                                    "stock": {
+                                        "type": "integer",
+                                        "example": "15"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/api/produit/{id}": {
+            "get": {
+                "tags": [
+                    "ApiProduit"
+                ],
+                "summary": "Get Produit",
+                "description": "get a produit.",
+                "operationId": "getProduit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ApiProduit"
+                ],
+                "summary": "modifier un Produit",
+                "description": "modifier un produit.",
+                "operationId": "updateProduit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "le produit a modifier avec son id",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "stock": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "Tomate",
+                                    "stock": 15
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ApiProduit"
+                ],
+                "summary": "Delete Produit",
+                "description": "delete a produit.",
+                "operationId": "deleteProduit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Produit": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "false",
+                        "example": "1"
+                    },
+                    "title": {
+                        "description": "Title of the product",
+                        "type": "string",
+                        "readOnly": "false"
+                    },
+                    "stock": {
+                        "description": "Stock of the product",
+                        "type": "integer",
+                        "readOnly": "false",
+                        "example": "15"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Produit"
+                }
+            }
+        }
+    }
+}
